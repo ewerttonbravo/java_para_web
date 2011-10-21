@@ -12,17 +12,12 @@ import java.util.Date;
 public class UserBean {
 	
 	private String firstName;
-	
 	private String lastName;
-	
 	private Date dob;
-	
 	private String gender;
-	
 	private String email;
-	
 	private String serviceLevel;
-	
+
 	public UserBean() {}
 
 	public String getFirstName() {

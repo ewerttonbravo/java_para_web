@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+      <h:head>
+      	<title>Hello World com JSF 2</title>
+      </h:head>
+      
+      <h:body>
+      	<h4>Formulario de registro</h4>
+      	
+      	<h:form id="form_reg">
+      		<h:outputLabel value="Primeiro nome" for="first_name" />
+      		<h:inputText value="" id="first_name" />
+      		<br />
+      		
+      		<h:outputLabel value="Ultimo nome" for="last_name" />
+      		<h:inputText value="" id="last_name" />
+      		<br />
+      		
+      		<h:outputLabel value="Nascimento" for="dob" />
+      		<h:inputText value="" id="dob" />
+      		<br />
+      		
+      		<h:outputLabel value="Sexo:" for="gender" />
+      		<h:selectOneRadio value="" id="gender">
+      			<f:selectItem itemLabel="Masculino" itemValue="masculino" />
+      			<f:selectItem itemLabel="Feminino" itemValue="feminino" />
+      		</h:selectOneRadio>
+      		<br />
+      		
+      		<h:outputLabel value="Email" for="email" />
+      		<h:inputText value="" id="email" />
+      		<br />
+      		
+      		<h:outputLabel value="Nivel do Servico:" for="service_level"/>
+      		<h:selectOneMenu value="" id="service_level">
+      			<f:selectItem itemLabel="Basico" itemValue="basico"/>
+      			<f:selectItem itemLabel="Medio" itemValue="medio"/>
+      			<f:selectItem itemLabel="Premium" itemValue="premium"/>
+      		</h:selectOneMenu>
+      	</h:form>
+      </h:body>
+</html>
