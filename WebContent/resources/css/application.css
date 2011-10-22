@@ -1,0 +1,27 @@
+@CHARSET "UTF-8";
+
+body {
+}
+
+div#top {
+	background-color: #2D2D2D;
+	color: #FFF;
+	padding: 0.2em;	
+}
+div#top .logo {
+	font-size: 3em;
+}
+div#top a {
+	float: right;
+	color: #FFF;
+}
+
+div#content {
+	margin-top: 1em;
+	margin-bottom: 1em;	
+}
+
+div#footer {
+	background-color: #7A7D7D;
+	text-align: center;	
+}

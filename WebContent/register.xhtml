@@ -1,14 +1,10 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
-      <h:head>
-      	<title>JSF Registration App</title>
-      </h:head>
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      template="/layout/application.xhtml">
       
-      <h:body>
-      	<h2>JSF Registration App</h2>
+      <ui:define name="body">
       	<h4>Formulario de registro</h4>
       	
       	<p><h:messages globalOnly="true" /></p>
@@ -57,5 +53,5 @@
       		</h:panelGrid>
       		<p><h:commandButton action="confirm" value="Register" /></p>
       	</h:form>
-      </h:body>
-</html>
+     </ui:define>
+</ui:composition>
