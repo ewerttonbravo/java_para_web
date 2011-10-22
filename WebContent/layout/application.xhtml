@@ -18,7 +18,9 @@
     		<ui:insert name="body">B o d y</ui:insert>
     	</div>
     	<div id="footer">
-    		<ui:include src="/layout/footer.xhtml" />
+    		<ui:include src="/layout/footer.xhtml">
+    			<ui:param name="company" value="#{userBean.lastName}" />
+    		</ui:include>
     	</div>
     </h:body>
 </html>
