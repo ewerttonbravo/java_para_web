@@ -4,6 +4,8 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       template="/layout/application.xhtml">
       
+      <ui:define name="title">Registro</ui:define>
+      
       <ui:define name="body">
       	<h4>Formulario de registro</h4>
       	
@@ -51,7 +53,10 @@
 	      		<h:message for="service_level" />
 	      		
       		</h:panelGrid>
-      		<p><h:commandButton action="confirm" value="Register" /></p>
+      		<p>
+      			<h:commandButton action="main" value="Cancelar" immediate="true" />
+      			<h:commandButton action="confirm" value="Register" />
+     		</p>
       	</h:form>
      </ui:define>
 </ui:composition>

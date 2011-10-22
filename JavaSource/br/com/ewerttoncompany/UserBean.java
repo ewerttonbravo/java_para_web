@@ -1,7 +1,9 @@
 package br.com.ewerttoncompany;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -28,6 +30,8 @@ public class UserBean implements Serializable {
 	private String gender;
 	private String email;
 	private String serviceLevel;
+	
+	private List<UserBean> users = new ArrayList<UserBean>();
 
 	public UserBean() {
 	}
@@ -47,6 +51,7 @@ public class UserBean implements Serializable {
 		
 		if (firstName.contains("e")) {
 			doneMessage = new FacesMessage("Seja bem-vindo, sr(a) " + firstName);
+			users.add(this);
 			outcome = "done";
 		} else {
 			doneMessage = new FacesMessage(
@@ -104,5 +109,13 @@ public class UserBean implements Serializable {
 
 	public void setServiceLevel(String serviceLevel) {
 		this.serviceLevel = serviceLevel;
+	}
+	
+	public List<UserBean> getUsers() {
+		return users;
+	}
+	
+	public void setUsers(List<UserBean> users) {
+		this.users = users;
 	}
 }
