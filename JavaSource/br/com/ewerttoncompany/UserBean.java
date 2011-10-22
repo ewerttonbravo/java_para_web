@@ -1,6 +1,14 @@
 package br.com.ewerttoncompany;
 
+import java.io.Serializable;
 import java.util.Date;
+
+import javax.faces.application.FacesMessage;
+import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.validator.ValidatorException;
 
 
 /**
@@ -9,8 +17,11 @@ import java.util.Date;
  * @since 14/10/11
  *
  */
-public class UserBean {
-	
+@ManagedBean
+@SessionScoped
+public class UserBean implements Serializable {
+
+	private static final long serialVersionUID = -4389015326512187575L;
 	private String firstName;
 	private String lastName;
 	private Date dob;
@@ -18,7 +29,34 @@ public class UserBean {
 	private String email;
 	private String serviceLevel;
 
-	public UserBean() {}
+	public UserBean() {
+	}
+	
+	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) 
+		throws ValidatorException {
+		String email = (String) value;
+		if (email.indexOf("@") == -1) {
+			FacesMessage message = new FacesMessage("Email invalido!!!");
+			throw new ValidatorException(message);
+		}
+	}
+	
+	public String addConfirmedUser() {
+		String outcome = null;
+		FacesMessage doneMessage = null;
+		
+		if (firstName.contains("e")) {
+			doneMessage = new FacesMessage("Seja bem-vindo, sr(a) " + firstName);
+			outcome = "done";
+		} else {
+			doneMessage = new FacesMessage(
+					"Seu primeiro nome deveria ter a letra \"e\"");
+			outcome = "register";
+		}
+		FacesContext fCtx = FacesContext.getCurrentInstance();
+		fCtx.addMessage(null, doneMessage);
+		return outcome;	
+	}
 
 	public String getFirstName() {
 		return firstName;

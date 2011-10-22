@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+	<title>JSF Registration App</title>
+</h:head>
+
+<h:body>
+	<h2>JSF Registration App</h2>
+	<h4>Registro confirmado, novo usuário adicionado</h4>
+	
+	<p><h:messages /></p>
+	
+	<h:form id="form_reg">
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Primeiro nome:" for="first_name" />
+			<h:outputText value="#{userBean.firstName}" id="first_name" />
+
+			<h:outputLabel value="Ultimo nome:" for="last_name" />
+			<h:outputText value="#{userBean.lastName}" id="last_name" />
+
+			<h:outputLabel value="Nascimento (dd/MM/yyyy):" for="dob" />
+			<h:outputText value="#{userBean.dob}" id="dob">
+				<f:convertDateTime pattern="dd/MM/yyyy" />
+			</h:outputText>
+
+			<h:outputLabel value="Sexo:" for="gender" />
+			<h:outputText value="#{userBean.gender}" id="gender" />
+
+			<h:outputLabel value="Email:" for="email" />
+			<h:outputText value="#{userBean.email}" id="email" />
+
+			<h:outputLabel value="Nivel do Servico:" for="service_level" />
+			<h:outputText value="#{userBean.serviceLevel}" id="service_level" />
+		</h:panelGrid>
+	</h:form>
+</h:body>
+</html>

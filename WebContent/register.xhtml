@@ -4,42 +4,58 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
       <h:head>
-      	<title>Hello World com JSF 2</title>
+      	<title>JSF Registration App</title>
       </h:head>
       
       <h:body>
+      	<h2>JSF Registration App</h2>
       	<h4>Formulario de registro</h4>
       	
-      	<h:form id="form_reg">
-      		<h:outputLabel value="Primeiro nome" for="first_name" />
-      		<h:inputText value="" id="first_name" />
-      		<br />
-      		
-      		<h:outputLabel value="Ultimo nome" for="last_name" />
-      		<h:inputText value="" id="last_name" />
-      		<br />
-      		
-      		<h:outputLabel value="Nascimento" for="dob" />
-      		<h:inputText value="" id="dob" />
-      		<br />
-      		
-      		<h:outputLabel value="Sexo:" for="gender" />
-      		<h:selectOneRadio value="" id="gender">
-      			<f:selectItem itemLabel="Masculino" itemValue="masculino" />
-      			<f:selectItem itemLabel="Feminino" itemValue="feminino" />
-      		</h:selectOneRadio>
-      		<br />
-      		
-      		<h:outputLabel value="Email" for="email" />
-      		<h:inputText value="" id="email" />
-      		<br />
-      		
-      		<h:outputLabel value="Nivel do Servico:" for="service_level"/>
-      		<h:selectOneMenu value="" id="service_level">
-      			<f:selectItem itemLabel="Basico" itemValue="basico"/>
-      			<f:selectItem itemLabel="Medio" itemValue="medio"/>
-      			<f:selectItem itemLabel="Premium" itemValue="premium"/>
-      		</h:selectOneMenu>
+      	<p><h:messages globalOnly="true" /></p>
+      	
+      	<h:form id="form_reg" prependId="false" >
+      		<h:panelGrid columns="3" >
+      			<h:outputLabel value="Primeiro nome" for="first_name" />
+	      		<h:inputText value="#{userBean.firstName}" id="first_name" 
+	      			required="true" label="Primeiro nome"  />
+	      		<h:message for="first_name" />
+	      		
+	      		<h:outputLabel value="Ultimo nome" for="last_name" />
+	      		<h:inputText value="#{userBean.lastName}" id="last_name" 
+	      			required="true"/>
+	      		<h:message for="last_name"/>
+	      		
+	      		<h:outputLabel value="Nascimento (dd/MM/yyyy)" for="dob" />
+	      		<h:inputText value="#{userBean.dob}" id="dob" required="true">
+	      			<f:convertDateTime pattern="dd/MM/yyyy"/>
+	      		</h:inputText>
+	      		<h:message for="dob" />
+	      		
+	      		<h:outputLabel value="Sexo:" for="gender" />
+	      		<h:selectOneRadio value="#{userBean.gender}" id="gender" 
+	      			required="true">
+	      			<f:selectItem itemLabel="Masculino" itemValue="masculino" />
+	      			<f:selectItem itemLabel="Feminino" itemValue="feminino" />
+	      		</h:selectOneRadio>
+	      		<h:message for="gender" />
+	      		
+	      		<h:outputLabel value="Email" for="email" />
+	      		<h:inputText value="#{userBean.email}" id="email" required="true"
+	      			validator="#{userBean.validateEmail}" />
+	      		<h:message for="email" />
+	      		
+	      		
+	      		<h:outputLabel value="Nivel do Servico:" for="service_level"/>
+	      		<h:selectOneMenu value="#{userBean.serviceLevel}" id="service_level"
+	      			required="true">
+	      			<f:selectItem itemLabel="Basico" itemValue="basico"/>
+	      			<f:selectItem itemLabel="Medio" itemValue="medio"/>
+	      			<f:selectItem itemLabel="Premium" itemValue="premium"/>
+	      		</h:selectOneMenu>
+	      		<h:message for="service_level" />
+	      		
+      		</h:panelGrid>
+      		<p><h:commandButton action="confirm" value="Register" /></p>
       	</h:form>
       </h:body>
 </html>
