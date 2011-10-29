@@ -11,9 +11,8 @@
 			<ui:include src="/_user_info.xhtml" />
 			<p>
 				<h:commandButton value="Edit" action="register" />
-				<h:commandButton value="Confirm"
-					action="#{userBean.addConfirmedUser}">
-				</h:commandButton>
+				<h:commandButton value="Confirm" action="#{userBean.addConfirmedUser}" 
+					rendered="#{not (userBean.gender eq 'masculino')}"/>
 			</p>
 		</h:form>
 	</ui:define>

@@ -5,6 +5,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+import javax.el.ELContext;
+import javax.el.ExpressionFactory;
+import javax.el.ValueExpression;
+import javax.faces.application.Application;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -20,10 +26,11 @@ import javax.faces.validator.ValidatorException;
  *
  */
 @ManagedBean
-@SessionScoped
+@SessionScoped	
 public class UserBean implements Serializable {
 
 	private static final long serialVersionUID = -4389015326512187575L;
+	
 	private String firstName;
 	private String lastName;
 	private Date dob;
@@ -36,6 +43,21 @@ public class UserBean implements Serializable {
 	public UserBean() {
 	}
 	
+	@PostConstruct
+	public void aposConstruir() {
+		System.out.println("************************");
+		System.out.println("UserBean foi instanciado");
+		
+		this.email = "ewerttonbravo@gmail.com";
+	}
+	
+	@PreDestroy
+	public void antesDeDestruir() {
+		System.out.println("************************");
+		System.out.println("UserBean sera destruido");
+		System.out.println("************************");
+	}
+	
 	public void validateEmail(FacesContext context, UIComponent toValidate, Object value) 
 		throws ValidatorException {
 		String email = (String) value;
@@ -45,9 +67,20 @@ public class UserBean implements Serializable {
 		}
 	}
 	
+	
 	public String addConfirmedUser() {
 		String outcome = null;
 		FacesMessage doneMessage = null;
+		
+		FacesContext jsfContext = FacesContext.getCurrentInstance();
+		ELContext elContext = jsfContext.getELContext();
+		Application application = jsfContext.getApplication();
+		ExpressionFactory expFactory = application.getExpressionFactory();
+		ValueExpression ve = 
+			expFactory.createValueExpression(elContext, "#{userBean}", UserBean.class);
+		UserBean uBean = (UserBean) ve.getValue(elContext);
+		
+		uBean.setFirstName(uBean.getFirstName() + "eee");
 		
 		if (firstName.contains("e")) {
 			doneMessage = new FacesMessage("Seja bem-vindo, sr(a) " + firstName);

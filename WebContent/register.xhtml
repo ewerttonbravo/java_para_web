@@ -2,7 +2,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      template="/layout/application.xhtml">
+      template="/layout/application.xhtml"
+                xmlns:rich="http://richfaces.org/rich">
       
       <ui:define name="title">Registro</ui:define>
       
@@ -12,7 +13,7 @@
       	<p><h:messages globalOnly="true" /></p>
       	
       	<h:form id="form_reg" prependId="false" >
-      		<h:panelGrid columns="3" >
+      		      		<h:panelGrid columns="3" >
       			<h:outputLabel value="Primeiro nome" for="first_name" />
 	      		<h:inputText value="#{userBean.firstName}" id="first_name" 
 	      			required="true" label="Primeiro nome"  />
@@ -39,8 +40,11 @@
 	      		
 	      		<h:outputLabel value="Email" for="email" />
 	      		<h:inputText value="#{userBean.email}" id="email" required="true"
-	      			validator="#{userBean.validateEmail}" />
-	      		<h:message for="email" />
+	      			validator="#{userBean.validateEmail}">
+	      			<f:validateRequired />
+	      			<rich:validator />
+      			</h:inputText>
+      			<rich:message for="email" />
 	      		
 	      		
 	      		<h:outputLabel value="Nivel do Servico:" for="service_level"/>
